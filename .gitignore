@@ -1,0 +1,35 @@
+# --- secrets (NEVER commit) ---
+Credentials/*
+!Credentials/*.example
+!Credentials/README.md
+*.json
+!**/package.json
+!**/tsconfig.json
+!**/*.base
+.env
+
+# --- python ---
+.venv/
+__pycache__/
+*.pyc
+
+# --- node / remotion ---
+node_modules/
+src/remotion-sawah/out/
+src/remotion-sawah/public/*.mp4
+src/remotion-sawah/public/*.mp3
+src/remotion-sawah/public/*.png
+
+# --- generated media / outputs ---
+*.mp4
+*.mp3
+*.png
+!docs/**/*.png
+planet_konawe/
+planet_konawe_scenes.csv
+
+# training data — keep private by default (add your own to run paddy_classification)
+src/training_points_*.csv
+
+# --- os ---
+.DS_Store

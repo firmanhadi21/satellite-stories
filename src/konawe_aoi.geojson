@@ -1,0 +1,26 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Konawe nickel AOI",
+        "center_lon": 122.174,
+        "center_lat": -3.528,
+        "box_km": 12
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [122.1200, -3.5819],
+            [122.2280, -3.5819],
+            [122.2280, -3.4741],
+            [122.1200, -3.4741],
+            [122.1200, -3.5819]
+          ]
+        ]
+      }
+    }
+  ]
+}

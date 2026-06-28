@@ -1,0 +1,9 @@
+earthengine-api
+pandas
+numpy
+matplotlib
+requests
+pillow
+imageio
+imageio-ffmpeg
+elevenlabs>=1.0
