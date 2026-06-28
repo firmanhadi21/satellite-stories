@@ -70,8 +70,8 @@ def annual_rgb(year):
 
 # --- 3. FOREST-LOSS HECTARES in the AOI (Hansen GFC) for Act 3 --------
 def forest_loss_ha():
-    gfc = ee.Image("UMD/hansen/global_forest_change_2023_v1_11")
-    loss = gfc.select("loss")                      # tree-cover loss 2001-2023
+    gfc = ee.Image("UMD/hansen/global_forest_change_2025_v1_13")
+    loss = gfc.select("loss")                      # tree-cover loss 2001-2024
     area = loss.multiply(ee.Image.pixelArea()).reduceRegion(
         reducer=ee.Reducer.sum(), geometry=aoi, scale=30, maxPixels=int(1e13))
     return ee.Number(area.get("loss")).divide(1e4).getInfo()   # m^2 -> ha
@@ -120,6 +120,7 @@ def render_local(out_path=None, dimensions=1080, target_seconds=17):
                 d.rectangle([m - pad, m - pad, m + tw + pad, m + th + pad * 2], fill=(0, 0, 0))
                 d.text((m - bb[0], m - bb[1]), lbl, font=font, fill="white",
                        stroke_width=5, stroke_fill="black")
+                print("  frame", y, "ok")
                 return np.array(im)
             except Exception as e:
                 last = e; time.sleep(3 * (a + 1))
@@ -131,11 +132,11 @@ def render_local(out_path=None, dimensions=1080, target_seconds=17):
     fps = max(1.0, len(imgs) / target_seconds)
     imageio.mimsave(out_path, imgs, fps=fps, codec="libx264", quality=8)
     print(f"Wrote {out_path}  ({len(imgs)} frames @ {fps:.2f} fps = {len(imgs)/fps:.0f}s)")
-    pub = os.path.join(os.path.dirname(os.path.abspath(__file__)), "remotion-sawah", "public")
+    pub = os.path.join(os.path.dirname(os.path.abspath(__file__)), "remotion-konawe", "public")
     if os.path.isdir(pub):
         shutil.copy(out_path, os.path.join(pub, "konawe_timelapse.mp4"))
         print("Copied to", os.path.join(pub, "konawe_timelapse.mp4"))
 
 if __name__ == "__main__":
-    print(f"Forest loss in AOI (Hansen 2001-2023): {forest_loss_ha():,.0f} ha")
+    print(f"Forest loss in AOI (Hansen 2001-2024): {forest_loss_ha():,.0f} ha")
     render_local()

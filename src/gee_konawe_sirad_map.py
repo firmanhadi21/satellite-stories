@@ -23,7 +23,7 @@ import gee_konawe_sirad as sd          # initializes EE + builds aoi, rgb, RGB_V
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(HERE, "sirad_konawe_map.png")
-PUBLIC = os.path.join(HERE, "remotion-sawah", "public")
+PUBLIC = os.path.join(HERE, "remotion-konawe", "public")
 
 # --- AOI bounds in degrees (EPSG:4326, north up) ----------------------
 coords = ee.List(sd.aoi.bounds().coordinates().get(0)).getInfo()
@@ -96,8 +96,11 @@ legend = [
     Patch(facecolor="#ff5555", edgecolor="k", label="Dibuka 2018–2020"),
     Patch(facecolor="#1a1a1a", edgecolor="k", label="Sudah terbuka / tambang ≤2017"),
 ]
-ax.legend(handles=legend, loc="lower right", fontsize=8, title="SIRAD",
-          framealpha=0.9, title_fontsize=9)
+leg = ax.legend(handles=legend, loc="lower right", fontsize=8,
+                title="SIRAD — kapan hutan dibuka", title_fontsize=9,
+                framealpha=1.0, edgecolor="black", borderaxespad=1.0, labelspacing=0.6)
+leg.get_frame().set_linewidth(1.2)
+leg.set_zorder(5)        # keep it above the map, anchored in the lower-right corner
 
 # infographic: per-period forest loss (inset bar chart, upper-left)
 from mpl_toolkits.axes_grid1.inset_locator import inset_axes

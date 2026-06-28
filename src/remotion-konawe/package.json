@@ -1,10 +1,10 @@
 {
-  "name": "remotion-sawah",
+  "name": "remotion-konawe",
   "version": "1.0.0",
-  "description": "X video: Dulu ini sawah — urban sprawl / sawah loss (@jalmiburung)",
+  "description": "Konawe nickel-mining destruction video (Sentinel-1 SIRAD + NDVI loss)",
   "scripts": {
     "studio": "remotion studio",
-    "render": "remotion render SawahVideo out/sawah_video.mp4 --crf 18"
+    "render": "remotion render KonaweVideo out/konawe_video.mp4 --crf 18"
   },
   "dependencies": {
     "@remotion/cli": "^4.0.230",

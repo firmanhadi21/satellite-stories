@@ -146,7 +146,7 @@ NDVIpal = ["FFFFFF","CE7E45","DF923D","F1B555","FCD163","99B718","74A901","66A00
 DIFF_VIS = {"bands": ["diff"], "min": -4, "max": 4, "palette": NDVIpal}
 
 # --- export PNGs (with retry) + copy to remotion public/ -------------
-PUBLIC = os.path.join(HERE, "remotion-sawah", "public")
+PUBLIC = os.path.join(HERE, "remotion-konawe", "public")
 def save(img, vis, name, dimensions=640, attempts=5):
     for a in range(attempts):
         try:
